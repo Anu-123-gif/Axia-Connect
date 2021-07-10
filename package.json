@@ -17,9 +17,19 @@
   },
   "homepage": "https://github.com/OpenVidu/openvidu-tutorials#readme",
   "dependencies": {
-    "body-parser": "1.19.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
     "express": "4.17.1",
-    "express-session": "1.17.1",
-    "openvidu-node-client": "2.18.0"
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "openvidu-node-client": "2.18.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.11"
   }
 }
