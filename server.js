@@ -30,11 +30,11 @@ const methodOverride = require("method-override");
 const initializePassport = require("./passport-config");
 initializePassport(
   passport,
-  (email) => users.find((user) => user.email === email),
-  (id) => users.find((user) => user.id === id)
+  (email) => users_new.find((user) => user.email === email),
+  (id) => users_new.find((user) => user.id === id)
 );
 
-const users = [];
+const users_new = [];
 
 // Server configuration
 // for parsing application/json
@@ -79,6 +79,25 @@ var options = {
   cert: fs.readFileSync("openviducert.pem"),
 };
 
+// Mock database
+var users = [
+  {
+    user: "publisher1",
+    pass: "pass",
+    role: OpenViduRole.PUBLISHER,
+  },
+  {
+    user: "publisher2",
+    pass: "pass",
+    role: OpenViduRole.PUBLISHER,
+  },
+  {
+    user: "subscriber",
+    pass: "pass",
+    role: OpenViduRole.SUBSCRIBER,
+  },
+];
+
 // Environment variable: URL where our OpenVidu server is listening
 var OPENVIDU_URL = process.argv[2];
 // Environment variable: secret shared with our OpenVidu server
@@ -98,11 +117,19 @@ var mapSessionNamesTokens = {};
 
 // Login
 app.get("/", checkAuthenticated, (req, res) => {
-  res.render("index.ejs", { name: req.user.name });
+  res.sendFile("views/index.html", { root: __dirname });
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("intro.ejs");
+});
+
+app.get("/index", (req, res) => {
+  res.render("index.ejs", { name: "KATY" });
+});
+
+app.get("lol", (req, res) => {
+  res.render("lo.html");
 });
 
 app.post(
@@ -122,7 +149,7 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    users.push({
+    users_new.push({
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,

@@ -17,7 +17,7 @@ const closeModal = () => {
 
 modalButton.addEventListener("click", openModal);
 closeButton1.addEventListener("click", closeModal);
-closeButton2.addEventListener("click", closeModal);
+closeButton1.addEventListener("click", closeModal);
 
 document.onkeydown = (evt) => {
   evt = evt || window.event;
