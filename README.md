@@ -1,13 +1,55 @@
-[![License badge](https://img.shields.io/badge/license-Apache2-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Documentation Status](https://readthedocs.org/projects/openviduio-docs/badge/?version=stable)](https://docs.openvidu.io/en/stable/?badge=stable)
-[![Docker badge](https://img.shields.io/docker/pulls/openvidu/openvidu-server-kms.svg)](https://hub.docker.com/r/openvidu/openvidu-server-kms)
-[![Support badge](https://img.shields.io/badge/support-sof-yellowgreen.svg)](https://openvidu.discourse.group/)
 
-[![][OpenViduLogo]](http://openvidu.io)
+# AXIA-CONNECT
 
-openvidu-js-node
-===
+<a href="https://user-images.githubusercontent.com/55819643/125511246-3ffdc59d-b90a-49f9-9378-1a157b8bb446.jpg"><img src="https://user-images.githubusercontent.com/55819643/125511246-3ffdc59d-b90a-49f9-9378-1a157b8bb446.jpg" height="400" width="400" ></a>
 
-Visit [docs.openvidu.io/en/stable/tutorials/openvidu-js-node/](http://docs.openvidu.io/en/stable/tutorials/openvidu-js-node/)
+AXIA-CONNECT is a clone of MS Teams built under Microsoft Engage Mentorship 2021. It's main functionality is to connect users to each other through video conferencing. Agile methodology was followed while building this project.
 
-[OpenViduLogo]: https://secure.gravatar.com/avatar/5daba1d43042f2e4e85849733c8e5702?s=120
+## Features:
+
+* Join multiple users to a session with special code/name given by the person whop initiates the meeting.
+* Authentication using email and password making use of express-passport.
+* Option of muting video/audio.
+* Chat with other users in the session.
+* Option to enter the session as a publisher or subscriber:
+  * A publisher can show their video and audio.
+  * A subscriber can only view what the publisher shows and chat during the session.
+
+## Understanding how AXIA-CONNECT is built:
+
+OpenVidu media server is used to built this WebApp. OpenVidu is a platform to facilitate the addition of video calls in web or mobile applications.WebRTC is the ultimate responsible for all media transmission at the very heart of OpenVidu. WebRTC is a modern, cross-platform framework that democratizes media transmission over the Internet. It is promoted by Google, Mozilla, Opera and others.Kurento is the WebRTC framework on which OpenVidu is built. 
+
+Refer to the image given below for better understanding of the frontend backend
+![image](https://user-images.githubusercontent.com/55819643/125513075-ac9d8028-79f2-4257-ab13-5f2e0f9f5ed1.png)
+
+## Demo:
+
+<a href="https://13.76.45.252:5000/">Axia-Connect</a> 
+
+For this demo to work you will need to allow the site to show.
+
+In another tab open this link, <a href="https://13.76.45.252/">Open Vidu</a>, and allow this page to be visible as well.
+
+This will allow AXIA-CONNECT to connect with Open vidu and work accordingly.
+
+## SetUp Instructions:
+
+* Fork this repo and clone it.
+
+* Run `npm install` to install all dependencies.
+
+* Add a `.env` file and add this line :
+
+  *`SESSION_SECRET=<your-session-secret>`
+
+* Run `node server.js https://localhost:4443 MY_SECRET` on one terminal.
+
+* Run `docker run -p 4443:4443 --rm -e OPENVIDU_SECRET=MY_SECRET openvidu/openvidu-server-kms:2.18.0` on another tab simultaneously.
+
+Visit <a href="https://localhost:5000">https://localhost:5000</a> to see it working.
+
+Visit <a href="https://localhost:4443">https://localhost:4443</a> to test the server.
+
+### Thank You for reading so far. Hope this helped!
+
+
