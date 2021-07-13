@@ -85,7 +85,6 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
 
     <link rel="styleSheet" href="public/assets/style.css" type="text/css" media="screen" />
     <script src="public/openvidu-browser-2.18.0.js"></script>
-    <script src="public/app.js"></script>
     <script>
       $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip({
@@ -100,11 +99,11 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="/"
-            ><img class="demo-logo" src="public/images/axia-4.svg" /> Axia-connect</a
+            ><img class="demo-logo" src="public/images/axia-4.svg" /> AXIA-CONNECT</a
           >
           <a
             class="navbar-brand nav-icon"
-            href="https://github.com/"
+            href="https://github.com/Anu-123-gif/Axia-Connect"
             title="GitHub Repository"
             target="_blank"
             ><i class="fa fa-github" aria-hidden="true"></i
@@ -112,6 +111,21 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
         </div>
       </div>
     </nav>
+
+    <div class="area" >
+      <ul class="circles">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+      
+
 
     <div id="main-container" class="container">
       <div id="not-logged" class="vertical-center">
@@ -129,10 +143,11 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
           </p>
           <p class="text-center">
             <button class="btn btn-lg btn-info" onclick="logIn()">
-              Log in :)
+              Log in
             </button>
           </p>
         </form>
+        
         <table class="table">
           <tr>
             <th>User</th>
@@ -163,13 +178,18 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
             <td>SUBSCRIBER</td>
           </tr>
         </table>
+        <br>
+        <form action="/logout?_method=DELETE" method="POST">
+          <button id="logout-btn" class="btn btn-warning" type="submit">Log Out</button>
+        </form>
       </div>
-
+    
       <div id="logged" hidden>
         <div id="join" class="vertical-center">
+          <br>
           <div id="img-div">
             <img src="public/images/axia-4.svg" />
-            <div id="company-name">Axia-connect</div>
+            <div id="company-name">AXIA-CONNECT</div>
           </div>
           <div id="join-dialog" class="jumbotron">
             <h1>Join a video session</h1>
@@ -211,7 +231,7 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
             </div>
           </div>
         </div>
-
+<br><br>
         <div id="session" style="display: none">
           <div id="session-header">
             <h1 id="session-title"></h1>
@@ -259,6 +279,7 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
           <div id="log-container">
             <pre id="log"></pre>
           </div>
+          <ul id="chat"></ul>
           <form id="sendtextmessage">
             <input type="text" id="texttosend" name="texttosend" />
             
@@ -269,9 +290,26 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
               id="buttonSendText"
               onclick="sendText(document.getElementById('texttosend').value); emptytext();"
             />
+        
           </form>
+          <input
+              class="btn btn-large btn-danger"
+              type="button"
+              value="Share screen"
+              id="buttonSendText"
+              onclick="shareScreen();"
+            />
+            <input
+              class="btn btn-large btn-danger"
+              type="button"
+              value="Stop Screen Share"
+              id="buttonSendText"
+              onclick="stopScreenShare();"
+            />
         </div>
-      
+
+      </ul>
+    
       </div>
     </div>
 
@@ -282,5 +320,10 @@ function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
         /></a>
       </div>
     </footer>
+  </div >
   </body>
+  <script src="public/app.js"></script>
+  <script type="text/javascript">
+      //var content = receiveText()
+  </script>
 </html>

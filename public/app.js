@@ -4,12 +4,12 @@ var session;
 var sessionName; // Name of the video session the user will connect to
 var token; // Token retrieved from OpenVidu Server
 
-var publisher;
+var publisher, newPublisher;
 var audioEnabled = true;
 var videoEnabled = true;
 var userData;
 /* OPENVIDU METHODS */
-
+var source = undefined;
 function joinSession() {
   getToken((token) => {
     // --- 1) Get an OpenVidu object ---
@@ -75,7 +75,7 @@ function joinSession() {
 
           publisher = OV.initPublisher("video-container", {
             audioSource: undefined, // The source of audio. If undefined default microphone
-            videoSource: undefined, // The source of video. If undefined default webcam
+            videoSource: source, // The source of video. If undefined default webcam
             publishAudio: true, // Whether you want to start publishing with your audio unmuted or not
             publishVideo: true, // Whether you want to start publishing with your video enabled or not
             resolution: "640x480", // The resolution of your video
@@ -116,6 +116,36 @@ function joinSession() {
   });
 
   return false;
+}
+
+function shareScreen() {
+  session.unpublish(publisher);
+  newPublisher = OV.initPublisher("html-element-id", {
+    videoSource: "screen",
+  });
+
+  newPublisher
+    .once("accessAllowed", (event) => {
+      newPublisher.stream
+        .getMediaStream()
+        .getVideoTracks()[0]
+        .addEventListener("ended", () => {
+          console.log('User pressed the "Stop sharing" button');
+        });
+      session.publish(newPublisher);
+    })
+    .catch((error) => {
+      console.warn("Error connecting to session");
+    });
+
+  newPublisher.once("accessDenied", (event) => {
+    console.warn("ScreenShare: Access Denied");
+  });
+}
+
+function stopScreenShare() {
+  session.unpublish(newPublisher);
+  session.publish(publisher);
 }
 
 function sendText(text) {
