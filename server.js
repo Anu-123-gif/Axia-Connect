@@ -116,7 +116,7 @@ var mapSessionNamesTokens = {};
 /* REST API */
 
 // Login
-app.get("/", (req, res) => {
+app.get("/", checkAuthenticated, (req, res) => {
   res.sendFile("views/index.html", { root: __dirname });
 });
 
