@@ -7,7 +7,7 @@ AXIA-CONNECT is a clone of MS Teams built under Microsoft Engage Mentorship 2021
 
 ## Features:
 
-* Join multiple users to a session with special code/name given by the person whop initiates the meeting.
+* Join multiple users to a session with special code/name given by the person who initiates the meeting.
 * Authentication using email and password making use of express-passport.
 * Option of muting video/audio.
 * Chat with other users in the session.
