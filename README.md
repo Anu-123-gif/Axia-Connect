@@ -9,7 +9,7 @@ AXIA-CONNECT is a clone of MS Teams built under Microsoft Engage Mentorship 2021
 
 * First Week : Prepared a Design Document deciding on the Language and Technology to use for build.
 * Second Week : Worked on building a simple 1-1 video conferencing WebApp and got to know about SDKs like Jitsi, OpenVidu.
-* Third Wekk : Experimented with different SDKs and decided to add OpenVidu to my project. Successfully added Video Conferencing, Mute/Unmute functionality to the WebApp.
+* Third Week : Experimented with different SDKs and decided to add OpenVidu to my project. Successfully added Video Conferencing, Mute/Unmute functionality to the WebApp.
 * Fourth and Final Week : Added Login/Logout Functionality, Screen Sharing, Chat Functionality and learnt to deploy the WebApp on Azure using a VM for the first time.
 
 ## Features:
