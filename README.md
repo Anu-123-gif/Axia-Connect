@@ -33,12 +33,6 @@ Refer to the image given below for better understanding of the frontend backend
 
 <a href="https://youtu.be/fh3uXAQ4bAI">Axia-Connect</a> 
 
-For this demo to work you will need to allow the site to show.
-
-In another tab open this link, <a href="https://13.76.45.252/">Open Vidu</a>, and allow this page to be visible as well.
-
-This will allow AXIA-CONNECT to connect with Open vidu and work accordingly.
-
 ## SetUp Instructions:
 
 * Fork this repo and clone it.
